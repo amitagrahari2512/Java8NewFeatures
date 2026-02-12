@@ -18,12 +18,10 @@ public class ImplementSimpleThreadPool {
 class SimpleThreadPool {
 	List<Runnable> list = new ArrayList<>();
 	int poolSize;
-	Runnable[] worker;
 	private volatile boolean isShutdown = false;
 	
 	public SimpleThreadPool(int poolSize) {
 		this.poolSize = poolSize;
-		this.worker = new Runnable[poolSize];
 		for(int i = 0 ; i < poolSize; i++) {
 			Thread thread = new Thread(new WorkerThread(), "Worker Thread " + i);
 			thread.start();
