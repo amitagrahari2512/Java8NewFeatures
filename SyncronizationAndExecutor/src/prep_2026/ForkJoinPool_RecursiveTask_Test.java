@@ -44,7 +44,7 @@ class SumTask extends RecursiveTask<Integer> {
 		int mid = (start + end)/2;
 		
 		SumTask left = new SumTask(arr, start , mid);
-		SumTask right = new SumTask(arr, start , mid);
+		SumTask right = new SumTask(arr, mid , end);
 		
 		left.fork(); //First Fork Left Task
 		int rightResult = right.compute(); // Main Thread compute right side data
