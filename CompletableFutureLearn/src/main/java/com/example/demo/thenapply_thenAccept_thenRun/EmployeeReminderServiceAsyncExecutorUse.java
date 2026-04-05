@@ -38,7 +38,9 @@ public class EmployeeReminderServiceAsyncExecutorUse {
 		}, executor).thenAcceptAsync((emails) -> {
 			System.out.println("Send Email : " + Thread.currentThread().getName());
 			emails.forEach(EmployeeReminderServiceAsyncExecutorUse :: sendEmail);
-		}, executor);
+		}, executor).thenRunAsync(() -> {
+			System.out.println("Work Done:" + Thread.currentThread().getName());
+		},executor);
 		
 		return voidCompletableFuture;
 	}

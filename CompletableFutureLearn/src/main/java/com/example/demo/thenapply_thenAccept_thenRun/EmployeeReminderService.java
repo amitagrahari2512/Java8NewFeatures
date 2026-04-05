@@ -34,6 +34,8 @@ public class EmployeeReminderService {
 		}).thenAccept((emails) -> {
 			System.out.println("Send Email : " + Thread.currentThread().getName());
 			emails.forEach(EmployeeReminderService :: sendEmail);
+		}).thenRun(() -> {
+			System.out.println("Work Done:" + Thread.currentThread().getName());
 		});
 		
 		return voidCompletableFuture;
